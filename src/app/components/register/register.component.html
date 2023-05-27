@@ -1,1 +1,47 @@
-<h1>Registrado</h1>
+<div class="col-md-5 mx-auto my-4">
+  <div class="card">
+    <div class="card-header text-center">
+      <strong>{{title}}</strong>
+    </div>
+    <br>
+    <div class="card card-body">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label class="form-label" for="name">Nombre</label>
+          <input type="text" formControlName="username" class="form-control" required
+                 [class.invalid]="registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched) || isSubmitted">
+        </div>
+        <span style="color: red;"
+              *ngIf="registerForm.get('username')?.hasError('required') && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched) || isSubmitted"
+              class="error">Campo requerido melón.</span>
+        <div class="form-group">
+          <label class="form-label" for="surname">Apellidos</label>
+          <input type="text" formControlName="surname" class="form-control"
+                 [class.invalid]="registerForm.get('surname')?.invalid && (registerForm.get('surname')?.dirty || registerForm.get('surname')?.touched) || isSubmitted">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input type="text" formControlName="email" class="form-control" required
+                 [class.invalid]="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched) || isSubmitted">
+        </div>
+        <span style="color: red;"
+              *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched) || isSubmitted"
+              class="error">Campo requerido melón.</span>
+        <div class="form-group">
+          <label class="form-label" for="password">Contraseña</label>
+          <input type="password" formControlName="password" class="form-control"
+                 required
+                 [class.invalid]="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched) || isSubmitted">
+        </div>
+        <span style="color: red;"
+              *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched) || isSubmitted"
+              class="error">Campo requerido melón.</span>
+        <br>
+        <div class="card-footer">
+          <input class="btn btn-success" type="submit" value="Registrarse">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
