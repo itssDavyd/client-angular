@@ -42,6 +42,25 @@ export class CarNewComponent implements OnInit {
   }
 
   onSubmit(crearCarForm: any) {
-    console.log('Creado=> ', this.crearCarForm.value);
+    //console.log('Creado=> ', this.crearCarForm.value);
+
+    //Queda crear el servicio de car.service.ts y configurarlo como el de user para llamar a create() y crear un nuevo Coche (TODO AHORA VENDRA EL CRUD)
+    this._userService.register(this.crearCarForm.value).subscribe(
+      response => {
+        if (response.status == 'success') {
+          //Vaciar el formulario
+          this.status = response.status;
+          crearCarForm.reset();
+
+          //Al finalizar redirige a HOME para que sea dinamica la pagina.
+          this._router.navigate(['login'])
+        } else {
+          this.status = 'error';
+        }
+      },
+      error => {
+        console.log(<any>error)
+      }
+    )
   }
 }

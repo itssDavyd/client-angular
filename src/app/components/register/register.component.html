@@ -19,7 +19,7 @@
                  [class.invalid]="registerForm.get('name')?.invalid && (registerForm.get('name')?.dirty || registerForm.get('name')?.touched) || isSubmitted">
         </div>
         <span style="color: red;"
-              *ngIf="registerForm.get('username')?.hasError('required') && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched) || isSubmitted"
+              *ngIf="registerForm.get('name')?.hasError('required') && (registerForm.get('name')?.dirty || registerForm.get('name')?.touched) || isSubmitted"
               class="error">Campo requerido melón.</span>
         <div class="form-group">
           <label class="form-label" for="surname">Apellidos</label>
