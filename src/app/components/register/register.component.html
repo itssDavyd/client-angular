@@ -1,15 +1,22 @@
 <div class="col-md-5 mx-auto my-4">
+
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    El registro se ha completado satisfactoriamente, <a [routerLink]="['/login']">identificate aquí.</a>
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    El registro no se ha podia completar, pruebe mas tarde.
+  </div>
   <div class="card">
     <div class="card-header text-center">
       <strong>{{title}}</strong>
     </div>
     <br>
     <div class="card card-body">
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
         <div class="form-group">
           <label class="form-label" for="name">Nombre</label>
-          <input type="text" formControlName="username" class="form-control" required
-                 [class.invalid]="registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched) || isSubmitted">
+          <input type="text" formControlName="name" class="form-control" required
+                 [class.invalid]="registerForm.get('name')?.invalid && (registerForm.get('name')?.dirty || registerForm.get('name')?.touched) || isSubmitted">
         </div>
         <span style="color: red;"
               *ngIf="registerForm.get('username')?.hasError('required') && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched) || isSubmitted"

@@ -9,18 +9,26 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" [routerLink]="['default']">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Crear car</a>
+        <li class="nav-item" *ngIf="identity">
+          <a class="nav-link" [routerLink]="['crear-coche']">Crear car</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" style="align-items: center;" *ngIf="!identity">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['login']">Login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['register']">Register</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav" style="align-items: center;" *ngIf="identity">
+        <li class="nav-item">
+          {{identity.name + ' ' + identity.surname}}
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['logout',1]" style="color: red;">Logout</a>
         </li>
       </ul>
     </div>

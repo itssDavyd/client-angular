@@ -4,17 +4,17 @@ export class Car {
   private description: string;
   private price: number;
   private status: boolean;
-  private createdAt: string;
-  private updatedAt: string;
+  private createdAt: any;
+  private updatedAt: any;
 
-  constructor() {
+  constructor(id: number, title: string, description: string, price: number, status: boolean, createdAt: any, updatedAt: any) {
 
-    this.id,
-      this.title,
-      this.description,
-      this.price,
-      this.status,
-      this.createdAt,
-      this.updatedAt
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.price = price;
+    this.status = status;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
   }
 }
