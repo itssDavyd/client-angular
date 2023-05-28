@@ -1,1 +1,11 @@
-<p>car-detail works!</p>
+<div class="col-md-5 mx-auto my-4" *ngIf="car">
+  <div class="card" style="width: 60rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{car.title}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{car.price}} € | <span *ngIf="car.status=='true'"><strong>Este vehiculo esta a la venta</strong></span>
+      </h6>
+      <p class="card-text">{{car.description}}</p>
+    </div>
+  </div>
+</div>
+

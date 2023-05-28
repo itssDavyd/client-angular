@@ -38,7 +38,7 @@
           <label class="form-label" for="status">¿A la venta?</label>
           <select formControlName="status" class="form-control" required
                   [class.invalid]="crearCarForm.get('status')?.invalid && (crearCarForm.get('status')?.dirty || crearCarForm.get('status')?.touched)">
-            <option value="true">Sí</option>
+            <option value="true" selected>Sí</option>
             <option value="false">No</option>
 
           </select>
@@ -48,7 +48,7 @@
               class="error">Campo requerido melón.</span>
         <br>
         <div class="card-footer">
-          <input class="btn btn-success" type="submit" value="Registrarse">
+          <input class="btn btn-success" type="submit" value="Crear coche">
         </div>
       </form>
     </div>
