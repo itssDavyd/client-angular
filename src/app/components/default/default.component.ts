@@ -15,10 +15,14 @@ import {CarService} from "../../services/car.service";
 export class DefaultComponent implements OnInit {
   title: string;
   cars: Array<any>;
+  token: any;
+  status: any;
 
   constructor(private fb: FormBuilder, private _userService: UserService, private _router: Router, private _route: ActivatedRoute, private _carService: CarService) {
     this.title = 'HOME';
     this.cars = [];
+    this.token = _userService.getToken();
+    this.status = '';
   }
 
   ngOnInit(): void {
@@ -29,6 +33,17 @@ export class DefaultComponent implements OnInit {
         if (response.status == 'success') {
           this.cars = response.cars;
         }
+      },
+      error => {
+        console.log(<any>error);
+      }
+    )
+  }
+
+  deleteCar(id: number) {
+    this._carService.delete(id, this.token).subscribe(
+      response => {
+        this._router.navigate(['/'])
       },
       error => {
         console.log(<any>error);
